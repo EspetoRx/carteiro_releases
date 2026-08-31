@@ -1,7 +1,7 @@
 # Carteiro
 
 <p align="center">
-  <img src="src/assets/carteiro.png" alt="Carteiro" width="120" />
+  <img src="carteiro.png" alt="Carteiro" width="120" />
 </p>
 
 <p align="center">
