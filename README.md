@@ -6,7 +6,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Status-Em%20desenvolvimento-orange?logo=githubactions&logoColor=white" alt="Em desenvolvimento" />
-  <img src="https://img.shields.io/badge/Version-0.6.0-blue?logo=semver&logoColor=white" alt="Versão 0.6.0" />
+  <img src="https://img.shields.io/badge/Version-0.7.0-blue?logo=semver&logoColor=white" alt="Versão 0.7.0" />
   <img src="https://img.shields.io/badge/Vue-3-4FC08D?logo=vue.js&logoColor=white" alt="Vue 3" />
   <img src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white" alt="TypeScript" />
   <img src="https://img.shields.io/badge/Tauri-2-24C8DB?logo=tauri&logoColor=white" alt="Tauri 2" />
