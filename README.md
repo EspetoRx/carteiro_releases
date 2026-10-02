@@ -19,11 +19,51 @@ O Carteiro é um cliente desktop para criar, enviar e organizar requisições HT
 
 ### macOS
 
+#### Via Homebrew
+
+```bash
+# Adicione o repositório
+brew tap EspetoRx/casks
+# Confie na cask
+brew trust --cask espetorx/casks/carteiro
+# OU no repositório global
+brew trust espetorx/casks
+# Instale a aplicação
+brew install --cask carteiro
+```
+
+#### Via DMG
+
+Baixe o arquivo e o copie para dentro da pasta de Applications.
+
+#### Após Instalar
+
 Utilize o comando abaixo caso seja indicado que o APP não foi assinado ou que esteja corrompido.
 
 ```bash
 xattr -cr /Applications/Carteiro.app
 ```
+
+#### Para desinstalar
+
+Para desinstalar use:
+
+```bash
+brew uninstall --cask carteiro
+```
+
+ou ainda se quiser fazê-lo removendo os arquivos de cache:
+
+```bash
+brew uninstall --cask --zap carteiro
+```
+
+ou ainda pela Interface Gráfica:
+
+1. Abra o finder.
+2. Vá na pasta aplicativos.
+3. Encontre o ícone do carteiro.
+4. Arraste-o para o Lixo ou clique com o botão direito e selelcione Mover para o Lixo.
 
 ### Windows
 
