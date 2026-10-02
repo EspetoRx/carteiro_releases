@@ -6,7 +6,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Status-Em%20desenvolvimento-orange?logo=githubactions&logoColor=white" alt="Em desenvolvimento" />
-  <img src="https://img.shields.io/badge/Version-0.5.0-blue?logo=semver&logoColor=white" alt="Versão 0.5.0" />
+  <img src="https://img.shields.io/badge/Version-0.6.0-blue?logo=semver&logoColor=white" alt="Versão 0.6.0" />
   <img src="https://img.shields.io/badge/Vue-3-4FC08D?logo=vue.js&logoColor=white" alt="Vue 3" />
   <img src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white" alt="TypeScript" />
   <img src="https://img.shields.io/badge/Tauri-2-24C8DB?logo=tauri&logoColor=white" alt="Tauri 2" />
@@ -14,6 +14,20 @@
 </p>
 
 O Carteiro é um cliente desktop para criar, enviar e organizar requisições HTTP. A interface Vue 3 roda sobre Tauri 2, com um backend Rust responsável pelo transporte HTTP e pelas integrações nativas do aplicativo.
+
+## Instalação da aplicação
+
+### macOS
+
+Utilize o comando abaixo caso seja indicado que o APP não foi assinado ou que esteja corrompido.
+
+```bash
+xattr -cr /Applications/Carteiro.app
+```
+
+### Windows
+
+Não se esqueça de autorizar a execução da aplicação que foi baixada da internet.
 
 ## Funcionalidades
 
