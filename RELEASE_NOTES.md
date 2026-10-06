@@ -1,6 +1,15 @@
-# Carteiro 1.0.0
+# Carteiro 1.0.1
 
 Cliente desktop para criar, enviar e organizar requisições HTTP, construído com Vue 3 e Tauri 2.
+
+## Novidades desta versão
+
+- Barra de título integrada à interface, com controles de minimizar, maximizar/restaurar e fechar.
+- Controles da janela adaptados ao sistema operacional: Windows, macOS e Linux.
+- Arraste da janela pela área livre do cabeçalho e maximização/restauração por duplo clique.
+- Remoção da barra nativa da janela, com ajustes específicos para manter esse comportamento no Linux.
+- Fundo da janela sincronizado com os temas claro, escuro e do sistema, evitando diferenças de cor ao maximizar.
+- Versão do aplicativo atualizada para 1.0.1 nos metadados, na interface e no User-Agent das requisições.
 
 ## Funcionalidades
 
