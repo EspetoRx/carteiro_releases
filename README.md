@@ -1,19 +1,19 @@
 # Carteiro
 
 <p align="center">
-  <img src="carteiro.png" alt="Carteiro" width="120" />
+  <img src="carteiro-wordmark.png" alt="Carteiro" width="400" />
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Status-Em%20desenvolvimento-orange?logo=githubactions&logoColor=white" alt="Em desenvolvimento" />
-  <img src="https://img.shields.io/badge/Version-0.9.0-blue?logo=semver&logoColor=white" alt="Versão 0.9.0" />
+  <img src="https://img.shields.io/badge/Version-1.4.1-blue?logo=semver&logoColor=white" alt="Versão 1.4.1" />
   <img src="https://img.shields.io/badge/Vue-3-4FC08D?logo=vue.js&logoColor=white" alt="Vue 3" />
   <img src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white" alt="TypeScript" />
   <img src="https://img.shields.io/badge/Tauri-2-24C8DB?logo=tauri&logoColor=white" alt="Tauri 2" />
   <img src="https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=white" alt="Vite" />
 </p>
 
-O Carteiro é um cliente desktop para criar, enviar e organizar requisições HTTP. A interface Vue 3 roda sobre Tauri 2, com um backend Rust responsável pelo transporte HTTP e pelas integrações nativas do aplicativo.
+O Carteiro é um cliente de APIs com aplicação desktop para Windows, macOS e Linux e uma versão web inicial. A interface Vue 3 é compartilhada: no desktop, Tauri 2 e Rust fornecem transporte HTTP e integrações nativas; na web, as chamadas partem diretamente do navegador do usuário. O suporte completo a HTTP, WebSocket, Socket.IO, GraphQL, gRPC, MQTT e EventStream (SSE) continua na versão desktop, sujeito aos requisitos de cada protocolo.
 
 ## Instalação da aplicação
 
@@ -73,7 +73,8 @@ Não se esqueça de autorizar a execução da aplicação que foi baixada da int
 
 ### Requests HTTP
 
-- Envie `GET`, `POST`, `PUT`, `PATCH` e `DELETE`.
+- Envie `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `OPTIONS`, `HEAD`, `TRACE`, `CONNECT` ou informe um método personalizado.
+- `POST`, `PUT`, `PATCH`, `DELETE`, `OPTIONS` e métodos personalizados podem enviar body; `GET`, `HEAD`, `TRACE` e `CONNECT` não enviam body pelo fluxo normal.
 - Configure URL, query params, headers, autenticação e body.
 - Edite bodies JSON, texto ou `application/x-www-form-urlencoded` com o Monaco Editor.
 - Ative ou desative linhas de parâmetros e headers sem removê-las.
@@ -101,6 +102,7 @@ Não se esqueça de autorizar a execução da aplicação que foi baixada da int
 - Reordene e mova requests e pastas na coleção do workspace.
 - Reabra chamadas do histórico, que registra os dados necessários para recuperar a request, além de status e duração quando disponíveis.
 - Alterações em uma aba vinculada a uma request salva são sincronizadas com o item da coleção.
+- No menu Requisições, **Salvar Todas as Requisições Não Vinculadas na Coleção** adiciona as abas de requisição ainda não vinculadas à raiz do workspace ativo, tanto no desktop quanto na web. Abas já salvas, flows, configurações e editores Git não são adicionados. **Salvar Várias Requisições em Pasta...** continua sendo a exportação de arquivos do desktop.
 
 ### Ambientes e flows
 
@@ -120,11 +122,21 @@ Não se esqueça de autorizar a execução da aplicação que foi baixada da int
 
 ### Interface e armazenamento
 
-- Alterne entre tema claro, escuro e do sistema.
-- Idiomas disponíveis: 🇺🇸 English, 🇧🇷 Português (Brasil), 🇪🇸 Español, 🇫🇷 Français, 🇨🇳 简体中文 e 🇯🇵 日本語.
+- Redimensione livremente os blocos da interface: ajuste a proporção entre Requisição e Resposta (tanto no modo vertical quanto horizontal/lado a lado) e a altura do Terminal em relação ao bloco de conteúdo. Suporta teclado, duplo clique para redefinir e persistência das dimensões.
+- Alterne entre tema claro, escuro e do sistema. Os temas disponíveis são Light Mode default, Light Monochrome, Light Pastel, Catppuccin Latte, VS Code Light, Dark Mode default, Dark Monochrome, Dark Pastel, Catppuccin Frappe, Catppuccin Macchiato, Catppuccin Mocha, Nord e VS Code Dark.
+- Idiomas disponíveis: English, Português (Brasil), Español, Français, 简体中文, 日本語, Deutsch, Italiano, Nederlands, Русский, 한국어, 繁體中文, العربية, हिन्दी, Türkçe, Polski, Українська, Svenska, Dansk, Norsk, Suomi, Čeština, Ελληνικά, العربية (فلسطين), Bahasa Indonesia e ไทย.
 - Use menus nativos e da aplicação para comandos de requests, workspaces, ambientes, flows e histórico.
 - Consulte o estado da request e métricas disponíveis na barra de status.
 - Requests, abas, workspaces, ambientes, histórico, preferências e cookie jar são mantidos localmente no perfil da aplicação. O cookie jar não é incluído nos arquivos exportados.
+
+### Dev Tools e terminal
+
+- Abra o painel em **Visualizar → Dev Tools** ou pelo botão Dev Tools na barra de status. O mesmo comando está no menu nativo Tauri.
+- Inicie várias sessões interativas do shell do sistema, alterne entre elas e feche-as individualmente. Fechar uma sessão encerra o processo correspondente.
+- Ajuste a altura do painel com a alça de redimensionamento superior, com duplo clique para retornar ao tamanho padrão.
+- O fundo do terminal acompanha o tema do aplicativo, inclusive na área abaixo da última linha.
+- Os comandos são executados com as permissões da conta atual. As sessões são mantidas em memória e não são restauradas ao reiniciar o aplicativo.
+- O shell interativo está disponível apenas no desktop. Na web, use o Console de logs e a aba Performance com as métricas disponíveis do navegador.
 
 > O Carteiro é um cliente de API, não um cofre de segredos. Revise credenciais antes de compartilhar arquivos `.creq`, `.cwsk`, snippets, histórico ou capturas de tela.
 
@@ -136,33 +148,32 @@ Não se esqueça de autorizar a execução da aplicação que foi baixada da int
 - [Monaco Editor](https://microsoft.github.io/monaco-editor/)
 - `reqwest` para o transporte HTTP no backend
 
-## Executar em desenvolvimento
+<!-- test-dashboard:start -->
 
-Pré-requisitos: Node.js, pnpm, Rust e as dependências de sistema exigidas pelo Tauri 2 para sua plataforma. Consulte o [guia de pré-requisitos do Tauri](https://tauri.app/start/prerequisites/).
+## Painel de testes automatizados
 
-```bash
-pnpm install
-pnpm dev
-```
+Atualizado em 2026-11-07T10:13:24.065Z. Gerado a partir dos relatórios JSON em `tests-carteiro/` e dos dados publicados para sistemas/plataformas sem relatórios locais (**390 relatórios**).
 
-Para abrir a aplicação desktop durante o desenvolvimento:
+**Etapas aprovadas: 99.1%** (8576/8653) · **Execuções aprovadas: 90.3%** (352/390) · 0 execuções com falha · 0 interrompidas · 0 em andamento · 33 parciais · 5 ignoradas.
 
-```bash
-pnpm tauri dev
-```
+> A porcentagem de etapas mede somente os passos explicitamente registrados nos relatórios; não representa cobertura de código. A taxa de execuções considera apenas execuções concluídas (aprovadas ou com falha).
+> Cada suíte/alvo/cenário aparece uma vez por sistema/plataforma, com o resultado mais recente; novas rodadas, tags ou versões atualizam o teste existente.
 
-Para compilar o backend Rust isoladamente:
+> Execuções parciais/ignoradas não contam como aprovação. SKIP mantém motivo e alvo nos passos; aprovação de Web não comprova desktop nativo.
 
-```bash
-cargo build --manifest-path src-tauri/Cargo.toml
-```
+<!-- test-dashboard-platforms: macos=macOS%20%2F%20nativo,linux=Linux%20%2F%20nativo,linux-wsl-ubuntu=Linux%20%2F%20WSL%20Ubuntu,linux-wsl-arch=Linux%20%2F%20WSL%20Arch%20Linux,windows=Windows%20%2F%20nativo -->
+<!-- test-dashboard-skipped-steps: macos=10,linux=15,linux-wsl-ubuntu=9,linux-wsl-arch=18,windows=18 -->
 
-Os comandos de empacotamento do aplicativo podem ser executados pelo CLI do Tauri, conforme a configuração e as dependências instaladas para cada plataforma.
+| Sistema / Plataforma   | Relatórios | Aprovados | Com falha | Interrompidos | Em andamento | Etapas aprovadas | Etapas com falha | Parciais | Ignorados |
+| ---------------------- | ---------: | --------: | --------: | ------------: | -----------: | ---------------: | ---------------: | -------: | --------: |
+| macOS / nativo         |         97 |        91 |         0 |             0 |            0 |             2050 |                0 |        5 |         1 |
+| Linux / nativo         |         83 |        77 |         0 |             0 |            0 |             1868 |                2 |        5 |         1 |
+| Linux / WSL Ubuntu     |         61 |        58 |         0 |             0 |            0 |             1642 |                1 |        2 |         1 |
+| Linux / WSL Arch Linux |         71 |        62 |         0 |             0 |            0 |             1451 |                2 |        8 |         1 |
+| Windows / nativo       |         78 |        64 |         0 |             0 |            0 |             1565 |                2 |       13 |         1 |
 
-## Documentação
-
-A documentação incorporada à aplicação detalha requests, respostas, autenticação, headers e cookies, ambientes, workspaces, flows, histórico, arquivos, snippets, preferências, segurança e solução de problemas. A árvore de código-fonte também está em [docs/source-tree.md](docs/source-tree.md).
+<!-- test-dashboard:end -->
 
 ## Contribuição
 
-Contribuições são bem-vindas. Abra uma issue para discutir mudanças maiores ou envie um pull request com uma descrição objetiva do comportamento alterado e das verificações realizadas.
+Contribuições são bem-vindas. Abra uma issue para discutir mudanças maiores.
